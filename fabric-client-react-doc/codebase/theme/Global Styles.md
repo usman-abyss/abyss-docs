@@ -1,0 +1,1 @@
+Contains application wide styles i.e fonts, normalization and browser specific styles

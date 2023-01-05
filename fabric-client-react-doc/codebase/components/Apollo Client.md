@@ -1,0 +1,10 @@
+This code file a `ConfiguredApolloClient` component which creates an instance of the `ApolloClient` class from the `apollo-client` library and provides it to its children via the `ApolloProvider` component from the `react-apollo` library. The `ApolloClient` instance is created with a `link` property that is composed of several Apollo Link instances: `errorLink`, `authLink`, and `getLink`.
+
+## Apollo Links
+
+In Apollo Client, a "link" is a piece of middleware that sits between the client and the server and is responsible for handling the details of how to send GraphQL requests over a network. Apollo Client comes with a built-in `HttpLink` class for sending GraphQL requests over HTTP, but you can also create your own custom links to handle other types of network communication, such as WebSockets.
+
+An Apollo Link is a way to create middleware that modifies the behavior of an Apollo Client instance by intercepting and modifying the requests it sends to the server and the responses it receives from the server. Apollo Links are designed to be composable, so you can create a chain of links and apply them to your client to implement complex behavior.
+
+### Apollo Link Example
+In the code we provided, the `getLink` function returns an instance of an Apollo Link that routes GraphQL operations to either a WebSocket link or an HTTP link based on the operation type. The `authLink` function returns an instance of an Apollo Link that sets the `authorization` header of outgoing requests to a bearer token if one is available. The `errorLink` function returns an instance of an Apollo Link that handles errors in the responses from the server by checking for a specific error condition and navigating to a specific route if it is present. These three links are then composed using the `ApolloLink.from` function and passed to the `link` property of the `ApolloClient` instance that is created in the `ConfiguredApolloClient` component.

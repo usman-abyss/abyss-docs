@@ -1,0 +1,5 @@
+The `AuthGuard` component is a higher-order component that wraps its children and provides them with authentication-related behavior. It does this by checking the value of an `accessToken` variable, which is a Recoil state managed by the `useRecoilState` hook, and rendering different content based on the value of this token.
+
+The component first fetches a session access token from the server using an HTTP `GET` request to the `/api/auth/token` route, and then sets the `accessToken` Recoil state using the `setToken` updater function returned by the `useRecoilState` hook. This fetch and state update is done only if the `isLoading` state variable, obtained using the `useUser` hook, is `false` and the `accessToken` state is not already set.
+
+If the `isLoading` state is `true`, the component renders a circular progress indicator and a message asking the user to wait. If an error occurs while fetching the session access token, the component renders a message saying "Error Logging in". If the `accessToken` state is set, the component renders its children. Otherwise, it renders a message saying "Splash Page - Please Login".

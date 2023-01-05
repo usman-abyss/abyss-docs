@@ -1,0 +1,4 @@
+
+In NestJS, a bus is a message exchange pattern that allows different components to communicate with each other using a publish-subscribe pattern. A component that wants to send a message publishes it to a bus, and any other component that is subscribed to the bus can receive and process the message. This allows components to be loosely coupled and promotes separation of concerns, as components do not need to know the details of how other components are implemented or how they will use the message.
+
+Buses can be implemented using various types of message brokers, such as RabbitMQ or Kafka, or they can be implemented using in-memory message queues. NestJS provides a built-in `@nestjs/microservices` module that can be used to implement message-based communication using a variety of message brokers.
